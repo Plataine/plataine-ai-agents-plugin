@@ -1,0 +1,14 @@
+{
+  "name": "plataine-ai-agents",
+  "displayName": "Plataine AI Agents",
+  "version": "1.0.0",
+  "description": "Brings Plataine's AI Agents into Claude: ask about your factory and get optimized, approved actions from live production data. Requires the Plataine AI Agents desktop extension.",
+  "author": {
+    "name": "Plataine",
+    "url": "https://www.plataine.com"
+  },
+  "homepage": "https://www.plataine.com",
+  "repository": "https://github.com/Plataine/plataine-ai-agents-plugin",
+  "license": "Apache-2.0",
+  "keywords": ["plataine", "manufacturing", "production", "scheduling", "tpo"]
+}

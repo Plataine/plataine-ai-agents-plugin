@@ -1,0 +1,85 @@
+{
+  "manifest_version": "0.3",
+  "name": "plataine-ai-agents",
+  "display_name": "Plataine AI Agents",
+  "version": "1.0.0",
+  "description": "Connects Claude to Plataine's Total Production Optimization suite of AI Agents.",
+  "long_description": "Ask Claude what a disruption means for your factory. Plataine's AI Agents compute an optimized response from live production data, and actions that need approval are shown in Claude before they run. Every request runs with your own TPO permissions and is recorded in the TPO audit trail.",
+  "author": {
+    "name": "Plataine",
+    "url": "https://www.plataine.com"
+  },
+  "homepage": "https://www.plataine.com",
+  "documentation": "https://github.com/Plataine/plataine-ai-agents-plugin#readme",
+  "support": "https://www.plataine.com/contact-us/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Plataine/plataine-ai-agents-plugin"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "plataine",
+    "manufacturing",
+    "production",
+    "scheduling",
+    "tpo"
+  ],
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/server/index.js"
+      ],
+      "env": {
+        "PLATAINE_TPO_URL": "${user_config.tpo_url}",
+        "PLATAINE_ORG": "${user_config.org}",
+        "PLATAINE_USERNAME": "${user_config.username}",
+        "PLATAINE_PASSWORD": "${user_config.password}"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "plataine_ai_agent_bridge",
+      "description": "The bridge between Claude and the Plataine AI Agents: questions, instructions and actions."
+    }
+  ],
+  "compatibility": {
+    "platforms": [
+      "win32",
+      "darwin"
+    ],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  },
+  "user_config": {
+    "tpo_url": {
+      "type": "string",
+      "title": "TPO address",
+      "description": "The address of your TPO environment, provided by Plataine.",
+      "required": true
+    },
+    "org": {
+      "type": "string",
+      "title": "Organization",
+      "description": "The organization you enter on the TPO sign-in page.",
+      "required": false
+    },
+    "username": {
+      "type": "string",
+      "title": "User name",
+      "description": "Your TPO user name.",
+      "required": false
+    },
+    "password": {
+      "type": "string",
+      "title": "Password",
+      "description": "Your TPO password. Kept in the operating system's secure storage.",
+      "sensitive": true,
+      "required": false
+    }
+  }
+}
